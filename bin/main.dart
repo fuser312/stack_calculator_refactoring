@@ -29,9 +29,9 @@ int stackCalc(String argument) {
   for (int i = 0; i < walkthrough.length; i++) {
     if (walkthrough[i] == '+') {
       if (stack.length >= 2) {
-        stack.add(stack.last + stack[stack.length - 2]);
-        stack.removeAt(stack.length - 2);
-        stack.removeAt(stack.length - 2);
+        var last = stack.removeLast();
+        var secondLast = stack.removeLast();
+        stack.add(last + secondLast);
       }
     } else if (walkthrough[i] == 'DUP') {
       if (stack.isNotEmpty) {
@@ -43,21 +43,21 @@ int stackCalc(String argument) {
       }
     } else if (walkthrough[i] == '-') {
       if (stack.length >= 2) {
-        stack.add(stack.last - stack[stack.length - 2]);
-        stack.removeAt(stack.length - 2);
-        stack.removeAt(stack.length - 2);
+        var last = stack.removeLast();
+        var secondLast = stack.removeLast();
+        stack.add(last - secondLast);
       }
     } else if (walkthrough[i] == '*') {
       if (stack.length >= 2) {
-        stack.add(stack.last * stack[stack.length - 2]);
-        stack.removeAt(stack.length - 2);
-        stack.removeAt(stack.length - 2);
+        var last = stack.removeLast();
+        var secondLast = stack.removeLast();
+        stack.add(last * secondLast);
       }
     } else if (walkthrough[i] == '/') {
       if (stack.length >= 2) {
-        stack.add(stack.last ~/ stack[stack.length - 2]);
-        stack.removeAt(stack.length - 2);
-        stack.removeAt(stack.length - 2);
+        var last = stack.removeLast();
+        var secondLast = stack.removeLast();
+        stack.add(last ~/ secondLast);
       }
     } else {
       (stack.add(int.parse(walkthrough[i])));
